@@ -32,11 +32,11 @@ resource "aws_security_group" "web_sg" {
   }
 }
 resource "aws_instance" "web" {
-  ami                    = var.AMI_id
-  instance_type          = var.instance_type
-  vpc_security_group_ids = [aws_security_group.web_sg.id]
+  ami                         = var.AMI_id
+  instance_type               = var.instance_type
+  vpc_security_group_ids      = [aws_security_group.web_sg.id]
   associate_public_ip_address = true
-  user_data              = file("${path.module}/user_data.sh")
+  user_data                   = file("${path.module}/user_data.sh")
   tags = {
     Name        = "${var.project_name}-${var.Environment}-ec2"
     Project     = var.project_name
